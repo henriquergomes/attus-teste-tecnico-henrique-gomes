@@ -17,13 +17,13 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimationsAsync(),
     // Configuração do NgRx solicitada na Seção 3.2
-    provideStore({ 
-      todo: todoReducer 
+    provideStore({
+      todo: todoReducer,
     }),
     provideEffects([TodoEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: false,
-    })
+    }),
   ],
 };

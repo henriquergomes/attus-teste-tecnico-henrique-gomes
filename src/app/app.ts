@@ -9,11 +9,11 @@ import { SignalsCounterComponent } from './exercises/signals-counter/signals-cou
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, 
-    UserListComponent, 
+    CommonModule,
+    UserListComponent,
     SignalsCounterComponent,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   template: `
     <mat-toolbar color="primary">
@@ -24,16 +24,16 @@ import { SignalsCounterComponent } from './exercises/signals-counter/signals-cou
       <mat-tab label="Listagem de Usuários (Desafio 4)">
         <app-user-list></app-user-list>
       </mat-tab>
-      
+
       <mat-tab label="Exercícios (Signals/NgRx)">
         <div class="exercises-container">
           <section>
             <h3>3.1 Signals Counter</h3>
             <app-signals-counter></app-signals-counter>
           </section>
-          
-          <hr>
-          
+
+          <hr />
+
           <section>
             <h3>3.2 NgRx To-do</h3>
             <p>Implementação de Actions, Reducers, Selectors e Effects concluída no código.</p>
@@ -43,13 +43,17 @@ import { SignalsCounterComponent } from './exercises/signals-counter/signals-cou
       </mat-tab>
     </mat-tab-group>
   `,
-  styles: [`
-    .exercises-container {
-      padding: 40px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    section { margin-bottom: 40px; }
-  `]
+  styles: [
+    `
+      .exercises-container {
+        padding: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      section {
+        margin-bottom: 40px;
+      }
+    `,
+  ],
 })
 export class App {}

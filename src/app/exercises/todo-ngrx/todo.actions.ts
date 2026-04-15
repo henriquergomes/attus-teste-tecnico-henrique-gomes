@@ -4,14 +4,11 @@ import { Todo } from './todo.model';
 export const loadTodos = createAction('[Todo] Load Todos');
 export const loadTodosSuccess = createAction(
   '[Todo] Load Todos Success',
-  props<{ todos: Todo[] }>()
+  props<{ todos: Todo[] }>(),
 );
-export const loadTodosError = createAction(
-  '[Todo] Load Todos Error',
-  props<{ error: any }>()
-);
+export const loadTodosError = createAction('[Todo] Load Todos Error', props<{ error: any }>());
 
 export const toggleTodoComplete = createAction(
   '[Todo] Toggle Todo Complete',
-  props<{ id: number }>()
+  props<{ id: number }>(),
 );

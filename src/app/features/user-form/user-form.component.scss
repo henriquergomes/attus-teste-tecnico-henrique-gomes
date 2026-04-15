@@ -1,0 +1,19 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.phone-group {
+  display: flex;
+  gap: 12px;
+}
+
+.phone-type {
+  width: 120px;
+}
+
+.phone-number {
+  flex-grow: 1;
+}

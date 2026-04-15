@@ -1,0 +1,15 @@
+<div class="counter-container">
+  <h3>Carrinho (Signals)</h3>
+  <ul>
+    @for (item of itens(); track item.id) {
+      <li>
+        {{ item.nome }} - {{ item.quantidade }}x R$ {{ item.preco }}
+        <button (click)="remover(item.id)" [disabled]="item.quantidade === 0">-</button>
+        <button (click)="adicionar(item.id)">+</button>
+      </li>
+    }
+  </ul>
+  <p>
+    <strong>Total: R$ {{ total() }}</strong>
+  </p>
+</div>

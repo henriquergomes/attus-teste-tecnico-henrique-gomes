@@ -1,0 +1,25 @@
+<mat-form-field appearance="outline" class="email-field">
+  <mat-label>E-mail</mat-label>
+  <input
+    type="email"
+    matInput
+    [formControl]="emailControl"
+    [matAutocomplete]="auto"
+    (blur)="onBlur()"
+    placeholder="exemplo@email.com"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (option of filteredOptions$ | async; track option) {
+      <mat-option [value]="option">
+        {{ option }}
+      </mat-option>
+    }
+  </mat-autocomplete>
+
+  @if (emailControl.hasError('required')) {
+    <mat-error>E-mail é <strong>obrigatório</strong></mat-error>
+  }
+  @if (emailControl.hasError('email')) {
+    <mat-error>Por favor, insira um e-mail <strong>válido</strong></mat-error>
+  }
+</mat-form-field>

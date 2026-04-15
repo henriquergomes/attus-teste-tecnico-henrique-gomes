@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{ data ? 'Editar Usuário' : 'Novo Usuário' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="userForm" class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome Completo</mat-label>
+      <input matInput formControlName="name" placeholder="Ex: João Silva" />
+      @if (userForm.get('name')?.hasError('required')) {
+        <mat-error>Nome é obrigatório</mat-error>
+      }
+    </mat-form-field>
+
+    <email-input formControlName="email"></email-input>
+
+    <mat-form-field appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf" placeholder="000.000.000-00" appCpfMask />
+      @if (userForm.get('cpf')?.hasError('required')) {
+        <mat-error>CPF é obrigatório</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="phone-group">
+      <mat-form-field appearance="outline" class="phone-type">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="phoneType">
+          <mat-option value="Celular">Celular</mat-option>
+          <mat-option value="Fixo">Fixo</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="phone-number">
+        <mat-label>Telefone</mat-label>
+        <input matInput formControlName="phone" placeholder="(00) 00000-0000" appPhoneMask />
+        @if (userForm.get('phone')?.hasError('required')) {
+          <mat-error>Telefone é obrigatório</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="userForm.invalid" (click)="onSave()">
+    Salvar
+  </button>
+</mat-dialog-actions>

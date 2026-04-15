@@ -19,13 +19,13 @@ export class TodoEffects {
         // return this.http.get<Todo[]>('/api/todos').pipe(...)
         return of([
           { id: 1, tarefa: 'Estudar Angular 21', concluida: false },
-          { id: 2, tarefa: 'Implementar NgRx', concluida: true }
+          { id: 2, tarefa: 'Implementar NgRx', concluida: true },
         ]).pipe(
           delay(1000), // Simula latência de rede
-          map(todos => TodoActions.loadTodosSuccess({ todos })),
-          catchError(error => of(TodoActions.loadTodosError({ error })))
+          map((todos) => TodoActions.loadTodosSuccess({ todos })),
+          catchError((error) => of(TodoActions.loadTodosError({ error }))),
         );
-      })
-    )
+      }),
+    ),
   );
 }

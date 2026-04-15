@@ -1,4 +1,4 @@
-# Respostas - Teste Técnico Attus
+# Respostas - Teste Técnico Attus - Henrique Gomes
 
 Este documento contém as respostas para as seções teóricas e exercícios de refatoração do desafio.
 
@@ -9,6 +9,7 @@ Este documento contém as respostas para as seções teóricas e exercícios de 
 ### 1.1. Refatoração da Classe Verdureira
 
 Abaixo estão as melhorias aplicadas:
+
 - Uso de interfaces para tipagem forte.
 - Substituição de loops `for` por métodos de array modernos (`find`, `some`).
 - Melhoria na legibilidade e redução de duplicidade de código com um método privado `getProdutoPorId`.
@@ -25,7 +26,7 @@ class Produto implements IProduto {
   constructor(
     public readonly id: number,
     public readonly descricao: string,
-    public readonly quantidadeEstoque: number
+    public readonly quantidadeEstoque: number,
   ) {}
 }
 
@@ -36,18 +37,18 @@ class Verdureira {
     this.produtos = [
       new Produto(1, 'Maçã', 20),
       new Produto(2, 'Laranja', 0),
-      new Produto(3, 'Limão', 20)
+      new Produto(3, 'Limão', 20),
     ];
   }
 
   private getProdutoPorId(id: number): IProduto | undefined {
-    return this.produtos.find(p => p.id === id);
+    return this.produtos.find((p) => p.id === id);
   }
 
   getDescricaoProduto(produtoId: number): string {
     const produto = this.getProdutoPorId(produtoId);
     if (!produto) return 'Produto não encontrado';
-    
+
     return `${produto.id} - ${produto.descricao} (${produto.quantidadeEstoque}x)`;
   }
 
@@ -74,31 +75,33 @@ interface Pagina<T> {
 function filtrarEPaginar<T>(
   data: T[],
   filterFn: (item: T) => boolean,
-  params: PaginaParams
+  params: PaginaParams,
 ): Pagina<T> {
   const filtrados = data.filter(filterFn);
   const inicio = (params.pagina - 1) * params.tamanho;
   const fim = inicio + params.tamanho;
-  
+
   return {
     itens: filtrados.slice(inicio, fim),
-    total: filtrados.length
+    total: filtrados.length,
   };
 }
 
 // Exemplo de uso:
-interface Usuario { id: number; nome: string; }
+interface Usuario {
+  id: number;
+  nome: string;
+}
 const usuarios: Usuario[] = [
   { id: 1, nome: 'Alice' },
   { id: 2, nome: 'Bob' },
-  { id: 3, nome: 'Arthur' }
+  { id: 3, nome: 'Arthur' },
 ];
 
-const resultado = filtrarEPaginar(
-  usuarios,
-  u => u.nome.startsWith('A'),
-  { pagina: 1, tamanho: 10 }
-);
+const resultado = filtrarEPaginar(usuarios, (u) => u.nome.startsWith('A'), {
+  pagina: 1,
+  tamanho: 10,
+});
 ```
 
 ---
@@ -140,7 +143,7 @@ ngOnInit(): void {
   const pessoaId = 1;
 
   this.pessoaService.buscarPorId(pessoaId).pipe(
-    switchMap(pessoa => 
+    switchMap(pessoa =>
       this.pessoaService.buscarQuantidadeFamiliares(pessoa.id).pipe(
         map(qtd => ({ pessoa, qtd }))
       )
@@ -155,6 +158,7 @@ ngOnInit(): void {
 ### 2.3. RxJS — busca com debounce (Implementação Completa)
 
 **Serviço:**
+
 ```typescript
 @Injectable({ providedIn: 'root' })
 export class SearchService {
@@ -165,20 +169,23 @@ export class SearchService {
 ```
 
 **Componente:**
+
 ```typescript
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [ReactiveFormsModule, AsyncPipe],
   template: `
-    <input [formControl]="searchControl" placeholder="Buscar...">
-    @if (loading()) { <p>Carregando...</p> }
+    <input [formControl]="searchControl" placeholder="Buscar..." />
+    @if (loading()) {
+      <p>Carregando...</p>
+    }
     <ul>
       @for (item of results$ | async; track item.id) {
         <li>{{ item.name }}</li>
       }
     </ul>
-  `
+  `,
 })
 export class SearchComponent {
   searchControl = new FormControl('');
@@ -188,10 +195,12 @@ export class SearchComponent {
     debounceTime(500),
     distinctUntilChanged(),
     tap(() => this.loading.set(true)),
-    switchMap(term => this.service.search(term ?? '').pipe(
-      catchError(() => of([])),
-      finalize(() => this.loading.set(false))
-    ))
+    switchMap((term) =>
+      this.service.search(term ?? '').pipe(
+        catchError(() => of([])),
+        finalize(() => this.loading.set(false)),
+      ),
+    ),
   );
 
   constructor(private service: SearchService) {}

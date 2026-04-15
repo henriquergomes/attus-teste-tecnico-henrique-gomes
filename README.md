@@ -11,26 +11,34 @@ Este projeto foi desenvolvido como parte do processo seletivo da Attus. A aplica
 - **RxJS**: Operadores avançados para busca reativa com debounce e tratamento de fluxos assíncronos.
 - **Vitest**: Testes unitários de alta performance.
 
-## 📁 Estrutura do Projeto
+## 🎨 Padronização de Código (Clean Code)
 
-- `src/app/core`: Tipagens (models) e serviços globais.
-- `src/app/features`: Componentes principais da aplicação (Listagem e Formulário de Usuários).
-- `src/app/exercises`: Implementações das seções teóricas 3.1 (Signals) e 3.2 (NgRx).
-- `RESPOSTAS.md`: Documento com as respostas teóricas e refatorações solicitadas.
+O projeto já vem configurado para garantir a consistência do código automaticamente:
+
+- **Prettier**: Configurado via `.prettierrc` para as melhores práticas de indentação e estilo.
+- **EditorConfig**: Garante que diferentes editores sigam as mesmas regras de espaçamento.
+- **Auto-format**: O projeto inclui configurações de workspace para o VS Code (`.vscode/settings.json`) que ativam o **Formatar ao Salvar** automaticamente.
+- **Script de Formatação**: Você pode formatar todo o projeto a qualquer momento com o comando:
+  ```bash
+  npm run format
+  ```
 
 ## 🚀 Como Executar
 
 Garantir que possui o **Node.js (v20 ou superior)** instalado.
 
 1.  **Instalar dependências**:
+
     ```bash
     npm install
     ```
 
 2.  **Executar o projeto**:
+
     ```bash
     npm start
     ```
+
     A aplicação estará disponível em `http://localhost:4200`.
 
 3.  **Executar testes**:
@@ -46,4 +54,5 @@ Garantir que possui o **Node.js (v20 ou superior)** instalado.
 - **Zoneless**: A aplicação foi iniciada com foco na futura remoção do zone.js (padrão Angular 21).
 
 ---
+
 Desenvolvido por **Henrique Gomes**.
