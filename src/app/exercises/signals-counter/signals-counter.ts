@@ -1,12 +1,15 @@
 import { Component, signal, computed, effect, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../../core/interfaces/item.interface';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signals-counter',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './signals-counter.html',
+  styleUrl: './signals-counter.scss',
 })
 export class SignalsCounterComponent {
   itens = signal<Item[]>([

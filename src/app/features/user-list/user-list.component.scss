@@ -1,6 +1,6 @@
 .list-container {
-  padding: 24px;
-  max-width: 1200px;
+  padding: 40px 24px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -8,19 +8,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 
   h1 {
     margin: 0;
-    font-size: 24px;
-    font-weight: 500;
-  }
-}
+    font-size: 42px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -2px;
+    font-family: 'Outfit', sans-serif;
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+    span {
+      color: #00ffa3; // Verde menta oficial da Attus
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+    }
+  }
 }
 
 .actions-bar {
@@ -28,7 +32,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
-  gap: 16px;
+  gap: 24px;
 }
 
 .filter-section {
@@ -42,75 +46,96 @@
 
 .search-field {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
-// Estilo Grid (Cards)
+// Estilo Grid (Cards) com Glassmorphism
 .user-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 .user-card {
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  background: rgba(45, 12, 85, 0.15) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    background: rgba(45, 12, 85, 0.25) !important;
+    border-color: rgba(171, 71, 188, 0.4) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 }
 
 .avatar {
-  background-color: #3f51b5;
+  background: linear-gradient(45deg, #4a148c, #9c27b0);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  border-radius: 50%;
+  font-weight: 600;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
 }
 
 // Estilo Lista (Expansion Panels) em 2 colunas INDEPENDENTES
 .user-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
   align-items: start;
 
   .list-column {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
 
   .user-panel {
+    background: rgba(45, 12, 85, 0.15) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
     margin: 0 !important;
-    border-radius: 8px !important;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(171, 71, 188, 0.3) !important;
+      background: rgba(45, 12, 85, 0.2) !important;
+    }
 
     &::before {
-      display: none; // Remove a linha separadora padrão do Material
+      display: none;
     }
   }
 
   .panel-icon {
     margin-right: 12px;
-    color: #666;
+    color: #ab47bc;
   }
 
   .panel-content {
-    padding: 16px 0;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .info-group {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     p {
-      margin: 4px 0;
-      color: #555;
+      margin: 8px 0;
+      color: #b0b0b0;
+      font-size: 15px;
+      strong {
+        color: #e1e1e1;
+        margin-right: 8px;
+      }
     }
   }
 
@@ -121,33 +146,46 @@
   }
 }
 
+// Customização de Botões do Material
+button[mat-raised-button].mat-primary {
+  background: linear-gradient(45deg, #7b1fa2, #9c27b0) !important;
+  border-radius: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 // Estados
 .loading-state,
 .error-state,
 .empty-state {
   text-align: center;
-  padding: 48px;
-  grid-column: 1 / -1; // Ocupa as duas colunas no modo lista
+  padding: 80px 48px;
+  grid-column: 1 / -1;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+
   mat-icon {
-    font-size: 48px;
-    width: 48px;
-    height: 48px;
-    margin-bottom: 16px;
-    color: #ccc;
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+    color: rgba(171, 71, 188, 0.3);
   }
 }
 
 // Responsividade
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .list-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 24px;
   }
 
   .actions-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 16px;
   }
 
   .user-list {

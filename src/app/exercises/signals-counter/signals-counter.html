@@ -1,15 +1,34 @@
-<div class="counter-container">
-  <h3>Carrinho (Signals)</h3>
-  <ul>
+<div class="counter-card glass-effect">
+  <h3><mat-icon>shopping_cart</mat-icon> Carrinho (Signals)</h3>
+
+  <div class="items-list">
     @for (item of itens(); track item.id) {
-      <li>
-        {{ item.nome }} - {{ item.quantidade }}x R$ {{ item.preco }}
-        <button (click)="remover(item.id)" [disabled]="item.quantidade === 0">-</button>
-        <button (click)="adicionar(item.id)">+</button>
-      </li>
+      <div class="item-row">
+        <div class="item-info">
+          <span class="item-name">{{ item.nome }}</span>
+          <span class="item-price">R$ {{ item.preco }}</span>
+        </div>
+
+        <div class="item-controls">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="remover(item.id)"
+            [disabled]="item.quantidade === 0"
+          >
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+          <span class="item-qty">{{ item.quantidade }}</span>
+          <button mat-icon-button color="primary" (click)="adicionar(item.id)">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+        </div>
+      </div>
     }
-  </ul>
-  <p>
-    <strong>Total: R$ {{ total() }}</strong>
-  </p>
+  </div>
+
+  <div class="total-section">
+    <span>Total</span>
+    <span class="total-value">R$ {{ total() }}</span>
+  </div>
 </div>

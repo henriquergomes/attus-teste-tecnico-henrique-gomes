@@ -1,0 +1,77 @@
+.counter-card {
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 20px 0;
+
+  h3 {
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ab47bc;
+  }
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+
+  .item-name {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .item-price {
+    font-size: 13px;
+    color: #b0b0b0;
+  }
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .item-qty {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+  }
+}
+
+.total-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+
+  .total-value {
+    font-weight: 700;
+    color: #ab47bc;
+  }
+}
+
+/* Estilo para botão desabilitado no tema dark */
+button:disabled {
+  opacity: 0.3;
+}

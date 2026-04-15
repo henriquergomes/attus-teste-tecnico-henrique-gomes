@@ -1,19 +1,29 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: 8px;
+  gap: 16px;
+  padding: 12px 0;
 }
 
 .phone-group {
   display: flex;
-  gap: 12px;
+  gap: 16px;
 }
 
 .phone-type {
-  width: 120px;
+  width: 140px;
 }
 
 .phone-number {
   flex-grow: 1;
+}
+
+/* Customização dos labels para melhor contraste no dark mode */
+mat-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Borda neon sutil no foco */
+.mat-mdc-form-field.mat-focused .mat-mdc-text-field-outline {
+  color: #ab47bc !important;
 }

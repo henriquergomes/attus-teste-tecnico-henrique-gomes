@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos Globais - Identidade Attus */
+
+body {
+  /* Gradiente baseado na imagem de referência */
+  background: linear-gradient(135deg, #0a041a 0%, #1a0b2e 40%, #240b36 100%) no-repeat fixed;
+  background-size: cover;
+}
+
+/* Utilitários de Glassmorphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+}
+
+/* Scrollbar personalizada para combinar com o tema escuro */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0118;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a148c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6a1b9a;
+}
+
+/* Ajustes globais de campos de input no dark mode */
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 12px;
+}
