@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { UserService } from '../../core/services/user.service';
 import { User } from '../../core/models/user.model';
@@ -30,6 +32,8 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
     MatFormFieldModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatButtonToggleModule,
+    MatExpansionModule,
     CpfPipe,
     PhonePipe,
   ],
@@ -40,6 +44,7 @@ export class UserListComponent implements OnInit {
   protected userService = inject(UserService);
   private dialog = inject(MatDialog);
 
+  viewMode = signal<'grid' | 'list'>('grid');
   searchControl = new FormControl('');
   searchTerm = signal('');
 
@@ -47,6 +52,10 @@ export class UserListComponent implements OnInit {
     const term = this.searchTerm().toLowerCase();
     return this.userService.users().filter((u) => u.name.toLowerCase().includes(term));
   });
+
+  // Divide os usuários em duas colunas para o modo lista independente
+  col1 = computed(() => this.filteredUsers().filter((_, i) => i % 2 === 0));
+  col2 = computed(() => this.filteredUsers().filter((_, i) => i % 2 !== 0));
 
   constructor() {
     this.searchControl.valueChanges
