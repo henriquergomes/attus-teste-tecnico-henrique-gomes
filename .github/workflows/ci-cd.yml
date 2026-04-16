@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: ['main', 'master']
   pull_request:
-    branches: [ "main", "master" ]
+    branches: ['main', 'master']
 
 # Concede as permissões necessárias para o deploy no GitHub Pages
 permissions:
@@ -13,7 +13,7 @@ permissions:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Instalar dependências
@@ -36,7 +36,7 @@ jobs:
         run: npm run coverage
 
       - name: Build do projeto
-        # O base-href é dinâmico para pegar o nome do seu repositório no GitHub. 
+        # O base-href é dinâmico para pegar o nome do seu repositório no GitHub.
         # Ex: se o repo chamar 'meu-teste', os links ficarão formatados adequadamente para os assets carregarem.
         run: npx ng build --configuration production --base-href /${{ github.event.repository.name }}/
 
