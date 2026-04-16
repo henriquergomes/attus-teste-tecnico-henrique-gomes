@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ['main', 'master']
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Concede as permissões necessárias para o deploy no GitHub Pages
 permissions:
   contents: write
@@ -27,17 +30,10 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      # Opcional: checagem de formatação (código com 'npx prettier --check .')
-      # Descomente se quiser barrar o PR se o código não estiver formatado.
-      # - name: Verificar formatação
-      #   run: npx prettier --check .
-
       - name: Executar testes (Vitest)
         run: npm run coverage
 
       - name: Build do projeto
-        # O base-href é dinâmico para pegar o nome do seu repositório no GitHub.
-        # Ex: se o repo chamar 'meu-teste', os links ficarão formatados adequadamente para os assets carregarem.
         run: npx ng build --configuration production --base-href /${{ github.event.repository.name }}/
 
       - name: Salvar artefatos do build (para o deploy)
@@ -47,7 +43,6 @@ jobs:
           path: dist/attus-app/browser/
 
   deploy:
-    # O deploy só acontece se formos 'push', ignorando os Pull Requests
     if: github.event_name == 'push'
     needs: build-and-test
     runs-on: ubuntu-latest
