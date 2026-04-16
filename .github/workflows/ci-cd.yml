@@ -19,16 +19,16 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'npm'
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Executar testes (Vitest)
         run: npm run coverage
@@ -37,7 +37,7 @@ jobs:
         run: npx ng build --configuration production --base-href /${{ github.event.repository.name }}/
 
       - name: Salvar artefatos do build (para o deploy)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-outputs
           path: dist/attus-app/browser/
@@ -49,16 +49,16 @@ jobs:
 
     steps:
       - name: Lendo o repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Baixar artefatos do build
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: build-outputs
           path: release/
 
       - name: Deploy para o GitHub Pages (branch gh-pages)
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./release/
