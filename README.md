@@ -1,58 +1,54 @@
-# Teste Técnico Attus - Frontend
+# Teste Técnico Attus - Frontend (Henrique Gomes)
 
-Este projeto foi desenvolvido como parte do processo seletivo da Attus. A aplicação demonstra conhecimentos em Angular 21, Angular Material 21, RxJS, NgRx e Angular Signals.
+Este projeto foi desenvolvido como parte do processo seletivo da Attus. A aplicação foi refinada para entregar uma experiência de usuário (UX) de alto nível, utilizando o que há de mais moderno no ecossistema **Angular 21**.
 
-## 🛠 Tecnologias Utilizadas
+## 🎨 Identidade Visual (Branding Attus.ai)
 
-- **Angular 21**: Versão mais recente do framework, utilizando componentes Standalone e Controle de Fluxo nativo (`@if`, `@for`).
-- **Angular Material 21**: Componentes de UI modernos e acessíveis.
-- **NgRx 21**: Gerenciamento de estado global (implementado na feature de To-do).
-- **Angular Signals**: Gerenciamento de estado reativo e granular (implementado na listagem de usuários e no contador).
-- **RxJS**: Operadores avançados para busca reativa com debounce e tratamento de fluxos assíncronos.
-- **Vitest**: Testes unitários de alta performance.
+A aplicação foi totalmente reformulada para seguir a identidade visual oficial da **Attus.ai**:
+- **Design System**: Baseado em tons profundos de violeta, verde menta e preto tecnológico.
+- **Glassmorphism**: Interface baseada em transparências, desfoque de fundo (`backdrop-filter`) e bordas com gradiente.
+- **Tipografia**: Uso da fonte **Outfit** (Extra Bold) para títulos de alto impacto e hierarquia clara de informações.
+- **Motion Design**: Animações de entrada (`fadeInUp`) em todos os componentes para uma navegação fluida.
 
-## 🎨 Padronização de Código (Clean Code)
+## 🚀 Tecnologias e Arquitetura
 
-O projeto já vem configurado para garantir a consistência do código automaticamente:
+- **Angular 21 (Zoneless)**: Implementado `provideZonelessChangeDetection()` para performance superior sem `zone.js`.
+- **Angular Material 3**: Componentes de última geração com customização profunda via CSS Variables.
+- **Signals**: Gerenciamento de estado granular e reativo em toda a aplicação.
+- **NgRx**: Implementação de Store reativa para gerenciamento de estado complexo (Exercício To-do).
+- **RxJS**: Operadores avançados para fluxos de busca assíncronos e tratamentos de debounce.
 
-- **Prettier**: Configurado via `.prettierrc` para as melhores práticas de indentação e estilo.
-- **EditorConfig**: Garante que diferentes editores sigam as mesmas regras de espaçamento.
-- **Auto-format**: O projeto inclui configurações de workspace para o VS Code (`.vscode/settings.json`) que ativam o **Formatar ao Salvar** automaticamente.
-- **Script de Formatação**: Você pode formatar todo o projeto a qualquer momento com o comando:
-  ```bash
-  npm run format
-  ```
+## 🛠 Funcionalidades de Destaque
 
-## 🚀 Como Executar
+- **Listagem Híbrida**: Alternância entre **Grid (Cards)** e **Lista (Expansion Panels)**.
+- **Layout Independente**: No modo lista, os painéis são organizados em duas colunas que se comportam de forma independente, garantindo que a expansão de um item não quebre o alinhamento da coluna vizinha.
+- **Máscaras Inteligentes (CPF/Telefone)**: Diretivas customizadas que formatam dados em tempo real, inclusive para valores carregados via `patchValue`.
+- **Custom Email Input**: Componente reutilizável (CVA) com autocomplete inteligente para domínios de e-mail populares.
+- **CRUD Completo**: Adição, Edição e Exclusão (com diálogo de confirmação do Material).
 
-Garantir que possui o **Node.js (v20 ou superior)** instalado.
+## 📝 Respostas Teóricas
+
+As respostas aos exercícios práticos e teóricos do teste (incluindo refatoração de código, TypeScript avançado e RxJS) podem ser encontradas no arquivo:
+👉 [**RESPOSTAS.md**](RESPOSTAS.md)
+
+## 🏁 Como Executar
 
 1.  **Instalar dependências**:
-
     ```bash
     npm install
     ```
 
 2.  **Executar o projeto**:
-
     ```bash
     npm start
     ```
-
     A aplicação estará disponível em `http://localhost:4200`.
 
-3.  **Executar testes**:
+3.  **Formatação Automática**:
     ```bash
-    npm test
+    npm run format
     ```
-
-## 📝 Decisões Técnicas
-
-- **OnPush**: Todos os novos componentes foram concebidos para serem compatíveis com `ChangeDetectionStrategy.OnPush` para máxima performance.
-- **Signals + computed**: Utilizados para derivar o estado da lista filtrada de usuários sem necessidade de subscrições manuais ou ciclos extras de detecção.
-- **Reactive Forms**: Validação robusta e tipada para o formulário de usuários.
-- **Zoneless**: A aplicação foi iniciada com foco na futura remoção do zone.js (padrão Angular 21).
 
 ---
 
-Desenvolvido por **Henrique Gomes**.
+Desenvolvido por **Henrique Gomes**. ✨

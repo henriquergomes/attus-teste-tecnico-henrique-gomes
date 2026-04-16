@@ -1,0 +1,121 @@
+.app-toolbar {
+  background: rgba(10, 4, 26, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  height: 80px !important;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+
+  .app-logo {
+    height: 52px;
+    width: auto;
+    filter: drop-shadow(0 0 8px rgba(188, 19, 254, 0.4));
+  }
+
+  .logo-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--attus-mint);
+    margin-top: 6px;
+    opacity: 0.9;
+  }
+}
+
+.tab-content {
+  padding: 0;
+  min-height: calc(100vh - 128px);
+}
+
+.exercises-page {
+  padding: 60px 24px;
+  background: radial-gradient(circle at center, rgba(188, 19, 254, 0.05), transparent);
+}
+
+.exercises-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+}
+
+.exercise-section {
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    .badge {
+      background: var(--attus-primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 24px;
+      opacity: 0.9;
+    }
+  }
+}
+
+.ngrx-info-card {
+  padding: 32px;
+  border-radius: 20px;
+  max-width: 500px;
+
+  p {
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+
+    strong {
+      color: var(--attus-mint);
+    }
+  }
+
+  .path-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-family: 'monospace';
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+::ng-deep .mat-mdc-tab-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+  font-weight: 600 !important;
+  font-family: 'Outfit', sans-serif !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+
+  mat-icon {
+    font-size: 20px;
+  }
+}

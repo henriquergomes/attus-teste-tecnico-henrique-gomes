@@ -47,7 +47,7 @@
     @if (viewMode() === 'grid') {
       <div class="user-grid">
         @for (user of filteredUsers(); track user.id) {
-          <mat-card class="user-card">
+          <mat-card class="user-card animate-in">
             <mat-card-header>
               <div mat-card-avatar class="avatar">
                 {{ user.name.charAt(0) }}
@@ -80,7 +80,7 @@
         <div class="list-column">
           <mat-accordion multi>
             @for (user of col1(); track user.id) {
-              <mat-expansion-panel class="user-panel">
+              <mat-expansion-panel class="user-panel animate-in">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <mat-icon class="panel-icon">person</mat-icon>
@@ -117,7 +117,7 @@
         <div class="list-column">
           <mat-accordion multi>
             @for (user of col2(); track user.id) {
-              <mat-expansion-panel class="user-panel">
+              <mat-expansion-panel class="user-panel animate-in">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <mat-icon class="panel-icon">person</mat-icon>

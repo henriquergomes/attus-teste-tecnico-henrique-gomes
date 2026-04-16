@@ -1,39 +1,67 @@
-/* Estilos Globais - Identidade Attus */
+/* Estilos Premium - Identidade Attus.ai */
+
+:root {
+  --attus-primary: #bc13fe; /* Violeta vibrante */
+  --attus-mint: #00ffa3; /* Verde menta sofisticado */
+  --attus-bg-deep: #0a041a;
+  --attus-glass-bg: rgba(255, 255, 255, 0.03);
+  --attus-glass-border: rgba(255, 255, 255, 0.08);
+}
 
 body {
-  /* Gradiente baseado na imagem de referência */
-  background: linear-gradient(135deg, #0a041a 0%, #1a0b2e 40%, #240b36 100%) no-repeat fixed;
+  background: radial-gradient(circle at top right, #1a0b2e, #0a041a) no-repeat fixed;
   background-size: cover;
+  font-family: 'Outfit', sans-serif;
+  color: #e1e1e1;
+  overflow-x: hidden;
 }
 
-/* Utilitários de Glassmorphism */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+/* Animações Premium */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Scrollbar personalizada para combinar com o tema escuro */
+.animate-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Utilitários Glassmorphism Refinados */
+.glass-premium {
+  background: var(--attus-glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--attus-glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Scrollbar invisível mas funcional */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
-::-webkit-scrollbar-track {
-  background: #0d0118;
-}
-
 ::-webkit-scrollbar-thumb {
-  background: #4a148c;
-  border-radius: 4px;
+  background: rgba(188, 19, 254, 0.3);
+  border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #6a1b9a;
+  background: var(--attus-primary);
 }
 
-/* Ajustes globais de campos de input no dark mode */
-.mat-mdc-form-field {
-  --mdc-outlined-text-field-container-shape: 12px;
+/* Tipografia avançada */
+h1,
+h2,
+h3 {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+}
+
+small {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
 }
