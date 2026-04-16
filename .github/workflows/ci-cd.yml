@@ -1,0 +1,69 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+# Concede as permissões necessárias para o deploy no GitHub Pages
+permissions:
+  contents: write
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      # Opcional: checagem de formatação (código com 'npx prettier --check .')
+      # Descomente se quiser barrar o PR se o código não estiver formatado.
+      # - name: Verificar formatação
+      #   run: npx prettier --check .
+
+      - name: Executar testes (Vitest)
+        run: npm run coverage
+
+      - name: Build do projeto
+        # O base-href é dinâmico para pegar o nome do seu repositório no GitHub. 
+        # Ex: se o repo chamar 'meu-teste', os links ficarão formatados adequadamente para os assets carregarem.
+        run: npx ng build --configuration production --base-href /${{ github.event.repository.name }}/
+
+      - name: Salvar artefatos do build (para o deploy)
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-outputs
+          path: dist/attus-app/browser/
+
+  deploy:
+    # O deploy só acontece se formos 'push', ignorando os Pull Requests
+    if: github.event_name == 'push'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Lendo o repositório
+        uses: actions/checkout@v4
+
+      - name: Baixar artefatos do build
+        uses: actions/download-artifact@v4
+        with:
+          name: build-outputs
+          path: release/
+
+      - name: Deploy para o GitHub Pages (branch gh-pages)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./release/
