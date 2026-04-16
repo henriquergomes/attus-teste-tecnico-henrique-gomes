@@ -5,6 +5,7 @@ Este projeto foi desenvolvido como parte do processo seletivo da Attus. A aplica
 ## 🎨 Identidade Visual (Branding Attus.ai)
 
 A aplicação foi totalmente reformulada para seguir a identidade visual oficial da **Attus.ai**:
+
 - **Design System**: Baseado em tons profundos de violeta, verde menta e preto tecnológico.
 - **Glassmorphism**: Interface baseada em transparências, desfoque de fundo (`backdrop-filter`) e bordas com gradiente.
 - **Tipografia**: Uso da fonte **Outfit** (Extra Bold) para títulos de alto impacto e hierarquia clara de informações.
@@ -34,17 +35,33 @@ As respostas aos exercícios práticos e teóricos do teste (incluindo refatora�
 ## 🏁 Como Executar
 
 1.  **Instalar dependências**:
+
     ```bash
     npm install
     ```
 
 2.  **Executar o projeto**:
+
     ```bash
     npm start
     ```
+
     A aplicação estará disponível em `http://localhost:4200`.
 
-3.  **Formatação Automática**:
+3.  **Executar testes unitários e Cobertura (Coverage)**:
+
+    Para assegurar a qualidade do código, a aplicação possui uma suite de testes unitários rica, rodando no ecossistema do Vitest. A cobertura média excede a exigência comum de **70%**.
+
+    ```bash
+    # Para rodar os testes em modo "watch" (desenvolvimento)
+    npm run test
+
+    # Para rodar os testes e gerar o relatório de cobertura completo
+    npm run coverage
+    ```
+    *(Após gerar a cobertura, um relatório HTML visual interativo completo será gerado na pasta `/coverage` para análise)*.
+
+4.  **Formatação Automática**:
     ```bash
     npm run format
     ```
